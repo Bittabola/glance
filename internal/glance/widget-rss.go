@@ -48,6 +48,8 @@ type rssWidget struct {
 
 func (widget *rssWidget) initialize() error {
 	widget.withTitle("RSS Feed").withCacheDuration(2 * time.Hour)
+	// Ensure RSS feeds cache for at least 5 minutes to reduce API load
+	widget.setMinimumCacheDuration(5 * time.Minute)
 
 	if widget.Limit <= 0 {
 		widget.Limit = 25

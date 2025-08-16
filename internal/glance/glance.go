@@ -235,6 +235,8 @@ func (p *page) updateOutdatedWidgets() {
 
 	var wg sync.WaitGroup
 	context := context.Background()
+	// Limit concurrent widget updates to prevent overwhelming external APIs
+	semaphore := make(chan struct{}, 10)
 
 	for w := range p.HeadWidgets {
 		widget := p.HeadWidgets[w]
@@ -246,6 +248,9 @@ func (p *page) updateOutdatedWidgets() {
 		wg.Add(1)
 		go func() {
 			defer wg.Done()
+			// Acquire semaphore slot
+			semaphore <- struct{}{}
+			defer func() { <-semaphore }()
 			widget.update(context)
 		}()
 	}
@@ -261,6 +266,9 @@ func (p *page) updateOutdatedWidgets() {
 			wg.Add(1)
 			go func() {
 				defer wg.Done()
+				// Acquire semaphore slot
+				semaphore <- struct{}{}
+				defer func() { <-semaphore }()
 				widget.update(context)
 			}()
 		}

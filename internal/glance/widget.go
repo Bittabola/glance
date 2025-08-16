@@ -182,6 +182,13 @@ func (w *widgetBase) requiresUpdate(now *time.Time) bool {
 	return now.After(w.nextUpdate)
 }
 
+// setMinimumCacheDuration ensures widgets have a minimum cache duration for better performance
+func (w *widgetBase) setMinimumCacheDuration(minDuration time.Duration) {
+	if w.cacheDuration < minDuration {
+		w.cacheDuration = minDuration
+	}
+}
+
 func (w *widgetBase) IsWIP() bool {
 	return w.WIP
 }
