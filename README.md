@@ -3,7 +3,38 @@
 <p align="center"><a href="#installation">Install</a> • <a href="docs/configuration.md#configuring-glance">Configuration</a> • <a href="https://discord.com/invite/7KQ7Xa9kJd">Discord</a> • <a href="https://github.com/sponsors/glanceapp">Sponsor</a></p>
 <p align="center"><a href="https://github.com/glanceapp/community-widgets">Community widgets</a> • <a href="docs/preconfigured-pages.md">Preconfigured pages</a> • <a href="docs/themes.md">Themes</a></p>
 
+> **🍴 Fork Notice**: This is a fork of [glanceapp/glance](https://github.com/glanceapp/glance) with performance enhancements. See [Fork-Specific Features](#fork-specific-features) below.
+
 ![](docs/images/readme-main-image.png)
+
+## Fork-Specific Features
+
+This fork includes performance optimizations not yet available in the upstream repository:
+
+### 🚀 Async Widget Loading
+- **Concurrency Control**: Limits concurrent widget updates to 10 at a time using semaphores, preventing API throttling and improving reliability
+- **Non-blocking Updates**: Widgets update independently without blocking each other
+
+### ⚡ Optimized HTTP Client
+| Setting | Upstream | This Fork |
+|---------|----------|-----------|
+| Request Timeout | 5s | **2s** |
+| Max Idle Conns Per Host | 10 | **20** |
+| Max Idle Conns | - | **100** |
+| Idle Conn Timeout | - | **90s** |
+| HTTP/2 Support | No | **Yes** |
+
+### 📦 Smarter Caching
+- RSS widgets now enforce a **minimum 5-minute cache duration** to reduce API load
+- New `setMinimumCacheDuration()` helper for widget developers
+
+### 📖 Architecture Documentation
+See [docs/async-architecture.md](docs/async-architecture.md) for the complete async loading roadmap, including:
+- Widget priority system (Critical → Background)
+- Progressive rendering pipeline
+- Target performance improvements (70-80% faster load times)
+
+---
 
 ## Features
 ### Various widgets
