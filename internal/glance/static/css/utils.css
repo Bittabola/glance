@@ -376,8 +376,10 @@ details[open] .summary::after {
     gap: 0.5rem;
 }
 
-:root:not([data-scheme=light]) .flat-icon {
-    filter: invert(1);
+@media (prefers-color-scheme: dark) {
+    .flat-icon {
+        filter: invert(1);
+    }
 }
 
 .attachments > * {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" id="top" data-theme="{{ .Request.Theme.Key }}" data-scheme="{{ if .Request.Theme.Light }}light{{ else }}dark{{ end }}">
+<html lang="en" id="top">
 <head>
     {{ block "document-head-before" . }}{{ end }}
     <script>
@@ -7,12 +7,11 @@
     const pageData = {
         /*{{ if .Page }}*/slug: "{{ .Page.Slug }}",/*{{ end }}*/
         baseURL: "{{ .App.Config.Server.BaseURL }}",
-        theme: "{{ .Request.Theme.Key }}",
     };
     </script>
     <title>{{ block "document-title" . }}{{ end }}</title>
     <meta charset="UTF-8">
-    <meta name="color-scheme" content="dark">
+    <meta name="color-scheme" content="dark light">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">

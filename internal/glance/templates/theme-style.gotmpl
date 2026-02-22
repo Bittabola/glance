@@ -1,12 +1,11 @@
-:root {
-    {{ if .BackgroundColor }}
-    --bgh: {{ .BackgroundColor.H }};
-    --bgs: {{ .BackgroundColor.S }}%;
-    --bgl: {{ .BackgroundColor.L }}%;
-    {{ end }}
-    {{ if ne 0.0 .ContrastMultiplier }}--cm: {{ .ContrastMultiplier }};{{ end }}
-    {{ if ne 0.0 .TextSaturationMultiplier }}--tsm: {{ .TextSaturationMultiplier }};{{ end }}
-    {{ if .PrimaryColor }}--color-primary: {{ .PrimaryColor.String | safeCSS }};{{ end }}
-    {{ if .PositiveColor }}--color-positive: {{ .PositiveColor.String | safeCSS }};{{ end }}
-    {{ if .NegativeColor }}--color-negative: {{ .NegativeColor.String | safeCSS }};{{ end }}
+@media (prefers-color-scheme: light) {
+    :root {
+        --bgh: 240;
+        --bgs: 13%;
+        --bgl: 95%;
+        --cm: 1.3;
+        --tsm: 0.5;
+        --color-primary: hsl(230, 100%, 30%);
+        --color-negative: hsl(0, 70%, 50%);
+    }
 }
