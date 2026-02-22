@@ -574,7 +574,7 @@ details[open] .summary::after {
 .justify-evenly { justify-content: space-evenly; }
 .justify-center { justify-content: center; }
 .justify-end { justify-content: end; }
-.uppercase { text-transform: uppercase; }
+.uppercase { text-transform: uppercase; font-weight: 600; }
 .grow { flex-grow: 1; }
 .flex-column { flex-direction: column; }
 .items-center { align-items: center; }

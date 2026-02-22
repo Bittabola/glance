@@ -1,13 +1,5 @@
-@font-face {
-    font-family: 'JetBrains Mono';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url('../fonts/JetBrainsMono-Regular.woff2') format('woff2');
-}
-
 :root {
-    font-size: 10px;
+    font-size: 12px;
 
     --scheme: ;
     --bgh: 240;

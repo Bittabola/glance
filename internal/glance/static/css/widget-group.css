@@ -1,6 +1,8 @@
 .widget-group-header {
     overflow-x: auto;
     scrollbar-width: thin;
+    text-transform: uppercase;
+    font-weight: 600;
 }
 
 .widget-group-title {
